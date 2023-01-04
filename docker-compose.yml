@@ -11,3 +11,12 @@ services:
       POSTGRES_DB: docker
     ports:
       - "5432:5432"
+  api:
+    image: docker-api
+    build: .
+    container_name: docker-api
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8080:8080"

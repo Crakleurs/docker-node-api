@@ -1,0 +1,13 @@
+version: "3.3"
+
+services:
+  db:
+    image: postgres
+    container_name: docker-app-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: docker_user
+      POSTGRES_PASSWORD: d3kTrklm54208
+      POSTGRES_DB: docker
+    ports:
+      - "5432:5432"

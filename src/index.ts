@@ -8,6 +8,7 @@ import {ContainersController} from "~/resources/containers/containers.controller
 import {ImagesController} from "~/resources/images/images.controller";
 import dbInit from "~/database/init";
 import {AuthController} from "~/resources/auth/auth.controller";
+import {JwtHandler} from "~/middlewares/jwt.handler";
 
 
 const app = express()
@@ -18,9 +19,9 @@ app.use(express.json())
 app.use(cors())
 app.use(ExceptionsHandler)
 
-app.use('/users', UsersController)
-app.use('/containers', ContainersController)
-app.use('/images', ImagesController)
+app.use('/users', JwtHandler, UsersController)
+app.use('/containers', JwtHandler, ContainersController)
+app.use('/images', JwtHandler, ImagesController)
 app.use('/auth', AuthController)
 
 app.get('/', (req, res) => res.send('API DOCKER-android'))
@@ -30,8 +31,6 @@ app.get('/', (req, res) => res.send('API DOCKER-android'))
  */
 app.all('*', UnknownRoutesHandler)
 
-
-app.use(ExceptionsHandler)
 
 dbInit()
 

@@ -1,13 +1,14 @@
 import {Router} from 'express'
 import {UsersService} from "~/resources/users/users.service";
 import {BadRequestException, HttpException, NotFoundException} from "~/utils/exception";
+import {AdminHandler} from "~/middlewares/jwt.handler";
 
 const UsersController = Router()
 
 const service = new UsersService()
 
 
-UsersController.get('/', (req, res, next) => {
+UsersController.get('/',(req, res, next) => {
 
   try {
 
@@ -20,7 +21,7 @@ UsersController.get('/', (req, res, next) => {
   }
 })
 
-UsersController.get('/:id', (req, res, next) => {
+UsersController.get('/:id',(req, res, next) => {
   try {
 
     const id = Number(req.params.id)
@@ -44,7 +45,7 @@ UsersController.get('/:id', (req, res, next) => {
   }
 })
 
-UsersController.post('/', async (req, res, next) => {
+UsersController.post('/', AdminHandler, async (req, res, next) => {
   try {
     const password = req.body.password;
     const username = req.body.username;

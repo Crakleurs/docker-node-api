@@ -1,6 +1,7 @@
 import {Router} from 'express'
 import {NotFoundException} from "~/utils/exception";
 import {ContainersService} from "~/resources/containers/containers.service";
+import {UserHandler} from "~/middlewares/jwt.handler";
 
 const ContainersController = Router()
 
@@ -38,7 +39,7 @@ ContainersController.get('/:id', async (req, res, next) => {
   }
 })
 
-ContainersController.post('/:id/stop', async (req, res, next) => {
+ContainersController.post('/:id/stop', UserHandler, async (req, res, next) => {
 
   try {
 
@@ -50,7 +51,7 @@ ContainersController.post('/:id/stop', async (req, res, next) => {
   }
 })
 
-ContainersController.delete('/:id', async (req, res, next) => {
+ContainersController.delete('/:id', UserHandler, async (req, res, next) => {
 
   try {
 
@@ -62,7 +63,7 @@ ContainersController.delete('/:id', async (req, res, next) => {
   }
 })
 
-ContainersController.post('/:id/restart', async (req, res, next) => {
+ContainersController.post('/:id/restart', UserHandler, async (req, res, next) => {
 
   try {
 
@@ -75,7 +76,7 @@ ContainersController.post('/:id/restart', async (req, res, next) => {
 
 })
 
-ContainersController.post('/:id/start', async (req, res, next) => {
+ContainersController.post('/:id/start', UserHandler, async (req, res, next) => {
 
   try {
 

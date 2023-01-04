@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import {NotFoundException} from "~/utils/exception";
 import {ImagesService} from "~/resources/images/images.service";
+import {UserHandler} from "~/middlewares/jwt.handler";
 
 const ImagesController = Router()
 
@@ -20,7 +21,7 @@ ImagesController.get('/', async (req, res, next) => {
 
 })
 
-ImagesController.get('/:id', async (req, res, next) => {
+ImagesController.get('/:id', UserHandler, async (req, res, next) => {
 
   try {
 
@@ -40,7 +41,7 @@ ImagesController.get('/:id', async (req, res, next) => {
 
 })
 
-ImagesController.delete('/prune', async (req, res, next) => {
+ImagesController.delete('/prune', UserHandler, async (req, res, next) => {
 
   try {
 
@@ -53,7 +54,7 @@ ImagesController.delete('/prune', async (req, res, next) => {
 
 })
 
-ImagesController.delete('/:id', async (req, res, next) => {
+ImagesController.delete('/:id', UserHandler, async (req, res, next) => {
 
   try {
 

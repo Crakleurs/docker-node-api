@@ -14,6 +14,8 @@ services:
     build: .
     container_name: docker-api
     restart: unless-stopped
+    environment:
+      NODE_ENV: docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:

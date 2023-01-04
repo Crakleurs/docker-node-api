@@ -7,6 +7,7 @@ const connection = new Sequelize(config.database.DATABASE, config.database.USERN
   dialect: 'postgres'
 });
 
+
 const tryConnection = async () => {
   try {
     await connection.authenticate();

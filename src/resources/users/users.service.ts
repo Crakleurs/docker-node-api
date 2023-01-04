@@ -1,6 +1,8 @@
 import UserModel from "~/resources/users/user.model";
-import {UserOutput} from "~/resources/users/user.interface";
-import {NotFoundException} from "~/utils/exception";
+import {BadRequestException, NotFoundException} from "~/utils/exception";
+import bcrypt from "bcrypt";
+import {config} from "~/config";
+import * as console from "console";
 
 export class UsersService {
   async findAll(): Promise<UserModel[]> {
@@ -15,4 +17,14 @@ export class UsersService {
     return user;
   }
 
+  async create(username: string, password: string, role: "ADMIN" | "USER" | "READER") {
+
+    const existingUser = await UserModel.findOne({where: {username: username}})
+    console.log(existingUser)
+    if (existingUser)
+      throw new BadRequestException("USER ALREADY EXIST")
+    const hash = await bcrypt.hash(password, config.saltRounds);
+
+    return await UserModel.create({username: username, password: hash, role: role});
+  }
 }

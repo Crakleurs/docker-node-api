@@ -7,7 +7,9 @@ export const config = {
     DATABASE: "docker",
     PORT: 5432,
     HOST: "localhost"
-  }
+  },
+  jwtSecret: "RUqz!Nwo4Q6t4&Im^2@54DZ@l6T",
+  saltRounds: 10
 }
 
 

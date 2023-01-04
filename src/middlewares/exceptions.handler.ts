@@ -14,5 +14,5 @@ export const ExceptionsHandler = (err: any, req: Request, res: Response, next: N
 
   return res
     .status(500)
-    .json({ error: 'Erreur interne' })
+    .json({ error: 'INTERNAL ERROR' })
 }

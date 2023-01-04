@@ -2,7 +2,7 @@ import Docker from 'dockerode'
 export class ContainersService {
   async findAll() {
     const docker = new Docker();
-    return await docker.listContainers();
+    return await docker.listContainers({'all': true});
   }
 
   async findOne(id: string) {

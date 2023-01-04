@@ -29,5 +29,10 @@ ImagesController.delete('/prune', async (req, res) => {
   return res.status(204)
 })
 
+ImagesController.delete('/:id', async (req, res) => {
+  await service.remove(req.params.id)
+  
+  return res.status(204)
+})
 
 export { ImagesController }

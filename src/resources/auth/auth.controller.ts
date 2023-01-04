@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import {BadRequestException, HttpException} from "~/utils/exception";
+import {BadRequestException} from "~/utils/exception";
 import {AuthService} from "~/resources/auth/auth.service";
 
 const AuthController = Router()

@@ -17,7 +17,6 @@ const app = express()
 app.use(express.json())
 
 app.use(cors())
-app.use(ExceptionsHandler)
 
 app.use('/users', JwtHandler, UsersController)
 app.use('/containers', JwtHandler, ContainersController)
@@ -34,5 +33,6 @@ app.all('*', UnknownRoutesHandler)
 
 dbInit()
 
+app.use(ExceptionsHandler)
 
 app.listen(config.API_PORT, () => console.log("Server running on port " + config.API_PORT))

@@ -20,7 +20,7 @@ export class UsersService {
   async create(username: string, password: string, role: "ADMIN" | "USER" | "READER") {
 
     const existingUser = await UserModel.findOne({where: {username: username}})
-    console.log(existingUser)
+
     if (existingUser)
       throw new BadRequestException("USER ALREADY EXIST")
     const hash = await bcrypt.hash(password, config.saltRounds);

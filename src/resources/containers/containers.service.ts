@@ -5,6 +5,18 @@ export class ContainersService {
     return await docker.listContainers({'all': true});
   }
 
+  async count() {
+    const docker = new Docker();
+    const containers = await docker.listImages();
+    return containers.length;
+  }
+
+  async countRunning() {
+    const docker = new Docker();
+    const containers = await docker.listImages({filters: '{"status": "running"}' });
+    return containers.length;
+  }
+
   async findOne(id: string) {
     const docker = new Docker();
     return docker.getContainer(id);

@@ -5,6 +5,12 @@ export class ImagesService {
     return await docker.listImages();
   }
 
+  async count() {
+    const docker = new Docker();
+    const images = await docker.listImages();
+    return images.length;
+  }
+
   async findOne(id: string) {
     const docker = new Docker();
     return docker.getImage(id);

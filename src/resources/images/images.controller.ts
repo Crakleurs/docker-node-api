@@ -21,6 +21,20 @@ ImagesController.get('/', async (req, res, next) => {
 
 })
 
+ImagesController.get('/count', async (req, res, next) => {
+
+  try {
+
+    return res
+      .status(200)
+      .json(await service.count())
+
+  } catch (e) {
+    next(e)
+  }
+
+})
+
 ImagesController.get('/:id', UserHandler, async (req, res, next) => {
 
   try {

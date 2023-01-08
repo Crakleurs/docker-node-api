@@ -20,6 +20,31 @@ ContainersController.get('/', async (req, res, next) => {
   }
 })
 
+
+ContainersController.get('/count', async (req, res, next) => {
+  try {
+
+    return res
+      .status(200)
+      .json(await service.count())
+
+  } catch (e) {
+    next(e)
+  }
+})
+
+ContainersController.get('/count-running', async (req, res, next) => {
+  try {
+
+    return res
+      .status(200)
+      .json(await service.countRunning())
+
+  } catch (e) {
+    next(e)
+  }
+})
+
 ContainersController.get('/:id', async (req, res, next) => {
 
   try {

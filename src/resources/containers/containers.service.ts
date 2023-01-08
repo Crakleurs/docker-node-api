@@ -8,13 +8,13 @@ export class ContainersService {
   async count() {
     const docker = new Docker();
     const containers = await docker.listContainers({'all': true});
-    return containers.length;
+    return {"count": containers.length};
   }
 
   async countRunning() {
     const docker = new Docker();
     const containers = await docker.listContainers();
-    return containers.length;
+    return {"count": containers.length};
   }
 
   async findOne(id: string) {

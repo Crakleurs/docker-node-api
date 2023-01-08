@@ -8,7 +8,7 @@ export class ImagesService {
   async count() {
     const docker = new Docker();
     const images = await docker.listImages();
-    return images.length;
+    return {"count": images.length};
   }
 
   async findOne(id: string) {

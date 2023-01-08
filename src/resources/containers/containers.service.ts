@@ -7,13 +7,13 @@ export class ContainersService {
 
   async count() {
     const docker = new Docker();
-    const containers = await docker.listImages();
+    const containers = await docker.listContainers();
     return containers.length;
   }
 
   async countRunning() {
     const docker = new Docker();
-    const containers = await docker.listImages({filters: '{"status": "running"}' });
+    const containers = await docker.listContainers({filters: '{"status": "running"}' });
     return containers.length;
   }
 

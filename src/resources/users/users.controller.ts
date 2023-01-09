@@ -1,6 +1,6 @@
 import {Router} from 'express'
 import {UsersService} from "~/resources/users/users.service";
-import {BadRequestException, HttpException, NotFoundException} from "~/utils/exception";
+import {BadRequestException, NotFoundException} from "~/utils/exception";
 import {AdminHandler} from "~/middlewares/jwt.handler";
 
 const UsersController = Router()
@@ -14,7 +14,7 @@ UsersController.get('/',(req, res, next) => {
 
     return res
       .status(200)
-      .json(service.findAll())
+      .json(await service.findAll())
 
   } catch (e) {
     next(e);

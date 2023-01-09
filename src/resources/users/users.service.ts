@@ -2,7 +2,6 @@ import UserModel from "~/resources/users/user.model";
 import {BadRequestException, NotFoundException} from "~/utils/exception";
 import bcrypt from "bcrypt";
 import {config} from "~/config";
-import * as console from "console";
 
 export class UsersService {
   async findAll(): Promise<UserModel[]> {

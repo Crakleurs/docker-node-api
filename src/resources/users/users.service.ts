@@ -26,4 +26,27 @@ export class UsersService {
 
     return await UserModel.create({username: username, password: hash, role: role});
   }
+
+
+  async countAdmins() {
+    const users = await UserModel.findAll({where: {role: "ADMIN"}});
+    return {count: users.length};
+  }
+
+  async countUsers() {
+    const users = await UserModel.findAll({where: {role: "USER"}});
+    return {count: users.length};
+  }
+
+  async countReaders() {
+    const users = await UserModel.findAll({where: {role: "READER"}});
+    return {count: users.length};
+  }
+
+  async count() {
+    const users = await UserModel.findAll();
+    return {count: users.length};
+  }
+
+
 }

@@ -22,6 +22,55 @@ UsersController.get('/',async (req, res, next) => {
   }
 })
 
+UsersController.get('/count',async (req, res, next) => {
+
+  try {
+
+    return res
+      .status(200)
+      .json(await service.count())
+  } catch (e) {
+    next(e);
+  }
+})
+
+UsersController.get('/count-admins',async (req, res, next) => {
+
+  try {
+
+    return res
+      .status(200)
+      .json(await service.countAdmins())
+  } catch (e) {
+    next(e);
+  }
+})
+
+
+UsersController.get('/count-users',async (req, res, next) => {
+
+  try {
+
+    return res
+      .status(200)
+      .json(await service.countUsers())
+  } catch (e) {
+    next(e);
+  }
+})
+
+UsersController.get('/count-readers',async (req, res, next) => {
+
+  try {
+
+    return res
+      .status(200)
+      .json(await service.countUsers())
+  } catch (e) {
+    next(e);
+  }
+})
+
 UsersController.get('/:id',(req, res, next) => {
   try {
 

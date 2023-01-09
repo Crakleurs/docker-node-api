@@ -23,7 +23,6 @@ UserModel.init({
   password: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
   },
   role: {
     type: DataTypes.STRING,

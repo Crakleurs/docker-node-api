@@ -2,6 +2,7 @@ import {Router} from 'express'
 import {UsersService} from "~/resources/users/users.service";
 import {BadRequestException, NotFoundException} from "~/utils/exception";
 import {AdminHandler} from "~/middlewares/jwt.handler";
+import * as console from "console";
 
 const UsersController = Router()
 
@@ -59,6 +60,7 @@ UsersController.post('/', AdminHandler, async (req, res, next) => {
       .json(await service.create(username, password, role))
 
   } catch (e) {
+    console.log(e)
     next(e)
   }
 })

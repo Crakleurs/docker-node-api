@@ -65,7 +65,7 @@ UsersController.get('/count-readers',async (req, res, next) => {
 
     return res
       .status(200)
-      .json(await service.countUsers())
+      .json(await service.countReaders())
   } catch (e) {
     next(e);
   }

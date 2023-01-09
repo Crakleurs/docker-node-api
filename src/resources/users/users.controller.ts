@@ -8,7 +8,7 @@ const UsersController = Router()
 const service = new UsersService()
 
 
-UsersController.get('/',(req, res, next) => {
+UsersController.get('/',async (req, res, next) => {
 
   try {
 

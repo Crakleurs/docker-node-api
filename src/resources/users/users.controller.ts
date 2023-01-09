@@ -60,7 +60,6 @@ UsersController.post('/', AdminHandler, async (req, res, next) => {
       .json(await service.create(username, password, role))
 
   } catch (e) {
-    console.log(e)
     next(e)
   }
 })

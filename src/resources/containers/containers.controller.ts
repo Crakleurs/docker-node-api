@@ -70,7 +70,7 @@ ContainersController.post('/:id/stop', UserHandler, async (req, res, next) => {
   try {
 
     await service.stop(req.params.id)
-    return res.status(201)
+    return res.status(201).json(null)
 
   } catch (e) {
     console.log(e)
@@ -95,7 +95,7 @@ ContainersController.post('/:id/restart', UserHandler, async (req, res, next) =>
   try {
 
     await service.restart(req.params.id)
-    return res.status(201)
+    return res.status(201).json(null)
 
   } catch (e) {
     console.log(e)
@@ -109,7 +109,7 @@ ContainersController.post('/:id/start', UserHandler, async (req, res, next) => {
   try {
 
     await service.start(req.params.id)
-    return res.status(201)
+    return res.status(201).json(null)
 
   } catch (e) {
     console.log(e)

@@ -2,6 +2,7 @@ import {Router} from 'express'
 import {NotFoundException} from "~/utils/exception";
 import {ContainersService} from "~/resources/containers/containers.service";
 import {UserHandler} from "~/middlewares/jwt.handler";
+import * as console from "console";
 
 const ContainersController = Router()
 
@@ -72,6 +73,7 @@ ContainersController.post('/:id/stop', UserHandler, async (req, res, next) => {
     return res.status(201)
 
   } catch (e) {
+    console.log(e)
     next(e)
   }
 })
@@ -96,6 +98,7 @@ ContainersController.post('/:id/restart', UserHandler, async (req, res, next) =>
     return res.status(201)
 
   } catch (e) {
+    console.log(e)
     next(e)
   }
 
@@ -109,6 +112,7 @@ ContainersController.post('/:id/start', UserHandler, async (req, res, next) => {
     return res.status(201)
 
   } catch (e) {
+    console.log(e)
     next(e)
   }
 

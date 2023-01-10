@@ -46,4 +46,12 @@ export class ContainersService {
     const container = docker.getContainer(id);
     await container.start()
   }
+
+  async getContainerInfo(id: string) {
+    const docker = new Docker();
+    let containers = await docker.listContainers({'all': true});
+    return  containers.find((container) => {
+      return container.Id === id
+    });
+  }
 }

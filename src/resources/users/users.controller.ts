@@ -2,7 +2,6 @@ import {Router} from 'express'
 import {UsersService} from "~/resources/users/users.service";
 import {BadRequestException, NotFoundException} from "~/utils/exception";
 import {AdminHandler} from "~/middlewares/jwt.handler";
-import * as console from "console";
 
 const UsersController = Router()
 
@@ -108,6 +107,35 @@ UsersController.post('/', AdminHandler, async (req, res, next) => {
       .status(201)
       .json(await service.create(username, password, role))
 
+  } catch (e) {
+    next(e)
+  }
+})
+
+
+UsersController.put('/password', async (req, res, next) => {
+  try {
+    const password = req.body.password;
+
+    if (!password)
+      throw new BadRequestException("PASSWORD IS INCORRECT");
+
+    return res
+      .status(200)
+      .json(await service.changePassword(res.locals.user.id, password))
+
+  } catch (e) {
+    next(e)
+  }
+})
+
+UsersController.delete('/:id', AdminHandler, async (req, res, next) => {
+  try {
+    const id = req.params.id;
+
+    return res
+      .status(204)
+      .json(await service.delete(+id))
   } catch (e) {
     next(e)
   }

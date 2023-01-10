@@ -22,6 +22,7 @@ export class UsersService {
 
     if (existingUser)
       throw new BadRequestException("USER ALREADY EXIST")
+
     const hash = await bcrypt.hash(password, config.saltRounds);
 
     return await UserModel.create({username: username, password: hash, role: role});
@@ -49,4 +50,20 @@ export class UsersService {
   }
 
 
+  async changePassword(id: number, password: string) {
+    const user = await UserModel.findOne({where: {id: id}})
+
+    if (!user)
+      throw new NotFoundException("USER NOT FOUND");
+
+    const hash = await bcrypt.hash(password, config.saltRounds);
+    user.password = hash;
+
+    return await UserModel.update(user, {where: {id: id}});
+  }
+
+  async delete(id: number) {
+
+    return await UserModel.destroy({where: {id: id}});
+  }
 }

@@ -2,6 +2,7 @@ import { Router } from 'express'
 import {NotFoundException} from "~/utils/exception";
 import {ImagesService} from "~/resources/images/images.service";
 import {UserHandler} from "~/middlewares/jwt.handler";
+import * as console from "console";
 
 const ImagesController = Router()
 
@@ -44,6 +45,7 @@ ImagesController.delete('/prune', UserHandler, async (req, res, next) => {
     return res.status(204).json(await service.findAll())
 
   } catch (e) {
+    console.log(e)
     next(e)
   }
 

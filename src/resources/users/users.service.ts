@@ -64,6 +64,6 @@ export class UsersService {
 
   async delete(id: number) {
 
-    return await UserModel.destroy({where: {id: id}});
+    return { count: await UserModel.destroy({where: {id: id}})};
   }
 }

@@ -22,4 +22,12 @@ export class ImagesService {
     return await docker.pruneImages();
   }
 
+  async totalSize() {
+    const docker = new Docker();
+    const images = await docker.listImages();
+
+    const size = images.reduce((accumulator, currentValue) => accumulator + currentValue.Size, 0);
+    return {size: size}
+  }
+
 }

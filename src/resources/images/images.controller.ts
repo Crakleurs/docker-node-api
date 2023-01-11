@@ -37,6 +37,20 @@ ImagesController.get('/count', async (req, res, next) => {
 })
 
 
+ImagesController.get('/size', async (req, res, next) => {
+
+  try {
+
+    return res
+      .status(200)
+      .json(await service.totalSize())
+
+  } catch (e) {
+    next(e)
+  }
+
+})
+
 ImagesController.delete('/prune', UserHandler, async (req, res, next) => {
 
   try {

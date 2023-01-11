@@ -57,13 +57,14 @@ export class UsersService {
       throw new NotFoundException("USER NOT FOUND");
 
     const hash = await bcrypt.hash(password, config.saltRounds);
-    user.password = hash;
 
-    return await UserModel.update(user, {where: {id: id}});
+    const result = await UserModel.update({password: hash}, {where: {id: id}});
+
+    return {count: result[0]};
   }
 
   async delete(id: number) {
 
-    return { count: await UserModel.destroy({where: {id: id}})};
+    return await UserModel.destroy({where: {id: id}});
   }
 }

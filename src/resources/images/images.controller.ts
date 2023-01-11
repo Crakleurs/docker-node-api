@@ -56,7 +56,7 @@ ImagesController.delete('/:id', UserHandler, async (req, res, next) => {
   try {
 
     await service.remove(req.params.id)
-    return res.status(204)
+    return res.status(204).json(null)
 
   } catch (e) {
     next(e)

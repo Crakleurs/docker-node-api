@@ -11,11 +11,6 @@ export class ImagesService {
     return {"count": images.length};
   }
 
-  async findOne(id: string) {
-    const docker = new Docker();
-    return docker.getImage(id);
-  }
-
   async remove(id: string) {
     const docker = new Docker();
     const image = docker.getImage(id);

@@ -35,32 +35,13 @@ ImagesController.get('/count', async (req, res, next) => {
 
 })
 
-ImagesController.get('/:id', UserHandler, async (req, res, next) => {
-
-  try {
-
-    const container = await service.findOne(req.params.id)
-
-    if (!container) {
-      throw new NotFoundException('Container Not Found')
-    }
-
-    return res
-      .status(200)
-      .json(container)
-
-  } catch (e) {
-    next(e)
-  }
-
-})
 
 ImagesController.delete('/prune', UserHandler, async (req, res, next) => {
 
   try {
 
     await service.prune()
-    return res.status(204)
+    return res.status(204).json(await service.findAll())
 
   } catch (e) {
     next(e)

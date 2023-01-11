@@ -42,7 +42,7 @@ ImagesController.delete('/prune', UserHandler, async (req, res, next) => {
   try {
 
     await service.prune()
-    return res.status(204).json(await service.findAll())
+    return res.status(200).json(await service.findAll())
 
   } catch (e) {
     console.log(e)
@@ -56,7 +56,7 @@ ImagesController.delete('/:id', UserHandler, async (req, res, next) => {
   try {
 
     await service.remove(req.params.id)
-    return res.status(204).json(null)
+    return res.status(204);
 
   } catch (e) {
     next(e)

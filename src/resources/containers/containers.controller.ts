@@ -50,7 +50,7 @@ ContainersController.get('/:id', async (req, res, next) => {
 
   try {
 
-    const container = await service.findOne(req.params.id)
+    const container = await service.getContainerInfo(req.params.id)
 
     if (!container) {
       throw new NotFoundException('Container Not Found')

@@ -32,7 +32,7 @@ UserModel.init({
 }, {
   timestamps: true,
   sequelize: connection,
-  paranoid: true
+  paranoid: false
 })
 
 export default UserModel;

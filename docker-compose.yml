@@ -12,6 +12,9 @@ services:
   api:
     image: docker-api
     build: .
+    depends_on:
+      db:
+        condition: service_started
     container_name: docker-api
     restart: unless-stopped
     environment:

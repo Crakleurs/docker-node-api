@@ -16,6 +16,8 @@ services:
     restart: unless-stopped
     environment:
       NODE_ENV: docker
+      ADMIN_NAME: "etienne"
+      ADMIN_PASSWORD: "etienne"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:

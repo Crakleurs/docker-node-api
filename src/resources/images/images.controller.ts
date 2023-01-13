@@ -70,7 +70,7 @@ ImagesController.delete('/:id', UserHandler, async (req, res, next) => {
   try {
 
     await service.remove(req.params.id)
-    return res.status(204);
+    return res.status(200).json(await service.findAll());
 
   } catch (e) {
     next(e)

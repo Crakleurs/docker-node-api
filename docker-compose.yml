@@ -18,8 +18,7 @@ services:
     image: docker-api
     build: .
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     container_name: docker-api
     restart: unless-stopped
     environment:

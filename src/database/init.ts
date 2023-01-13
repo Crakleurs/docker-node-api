@@ -17,8 +17,8 @@ const dbInit = async () => {
 
   const userService = new UsersService();
   let password = "password";
-  if (process.env.PASSWORD)
-    username = process.env.PASSWORD;
+  if (process.env.ADMIN_PASSWORD)
+    username = process.env.ADMIN_PASSWORD;
 
   await userService.create(username, password, "ADMIN")
 

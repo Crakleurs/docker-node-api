@@ -9,11 +9,6 @@ services:
       POSTGRES_USER: docker_user
       POSTGRES_PASSWORD: d3kTrklm54208
       POSTGRES_DB: docker
-#    healthcheck:
-#      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
-#      interval: 5s
-#      timeout: 5s
-#      retries: 5
   api:
     image: docker-api
     build: .

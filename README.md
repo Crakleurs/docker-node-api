@@ -4,7 +4,7 @@
 
 This project is an api that allows you to manage your docker containers and images from your smartphone. The api was made in Node-js with the framwork express. It uses a PostresSQL database. The library used to manage docker is dockerode.
 You can find the android application at the following address.
-[![Watch the video](https://discord.com/channels/@me/562005144754192414/1064994248031735938)](https://youtube.com/shorts/qWowBBXzT0E?feature=share)
+[![Watch the video](https://cdn.discordapp.com/attachments/562005144754192414/1064994247725563974/mob_docker.gif)](https://youtube.com/shorts/qWowBBXzT0E?feature=share)
 https://github.com/Louis9211/mobwhale
 
 ## Installation

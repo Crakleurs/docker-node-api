@@ -1,6 +1,6 @@
 # docker-node-api
 
-## Overwiew
+## Overview
 
 This project is an api that allows you to manage your docker containers and images from your smartphone. The api was made in Node-js with the framwork express. It uses a PostresSQL database. The library used to manage docker is dockerode.
 You can find the android application at the following address.

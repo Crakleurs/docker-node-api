@@ -21,6 +21,8 @@ services:
       ADMIN_NAME: etienne
       ADMIN_PASSWORD: etienne
       JWT_SECRET: 5Eq!j89s3*Ys
+      DB_HOST: db
+      DB_PORT: 5432
       DB_USER: docker_user
       DB_PASSWORD: d3kTrklm54208
       DB_NAME: docker

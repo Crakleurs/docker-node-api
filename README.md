@@ -1,4 +1,4 @@
-[![Publish Docker image](https://github.com/Crakleurs/docker-node-api/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/Crakleurs/docker-node-api/actions/workflows/docker-image.yml)
+[![Publish Docker image](https://github.com/Crakleurs/docker-node-api/actions/workflows/docker-image.yml/badge.svg)](https://github.com/Crakleurs/docker-node-api/actions/workflows/docker-image.yml)
 
 # docker-node-api
 

@@ -1,5 +1,6 @@
 export const config = {
   API_PORT: 8080,
+  WS_PORT: 8000,
   PRODUCTION: false,
   database: {
     USERNAME: process.env.DB_USER || "root",

@@ -1,5 +1,4 @@
 import { Router } from 'express'
-import {NotFoundException} from "~/utils/exception";
 import {ImagesService} from "~/resources/images/images.service";
 import {UserHandler} from "~/middlewares/jwt.handler";
 import * as console from "console";

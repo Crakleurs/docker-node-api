@@ -54,7 +54,7 @@ export class ContainersService {
         const containers = await asyncEmit<Docker.ContainerInfo[]>(socket, "containers-all");
         for (const container of containers) {
           if (container.Id === id) {
-            return socket.emit("containers-delete", id);
+            return await asyncEmit(socket, "containers-delete", id);
           }
         }
       } catch (e) {
@@ -69,7 +69,7 @@ export class ContainersService {
         const containers = await asyncEmit<Docker.ContainerInfo[]>(socket, "containers-all");
         for (const container of containers) {
           if (container.Id === id) {
-            return socket.emit("containers-stop", id);
+            return await asyncEmit(socket, "containers-stop", id);
           }
         }
       } catch (e) {
@@ -84,7 +84,7 @@ export class ContainersService {
         const containers = await asyncEmit<Docker.ContainerInfo[]>(socket, "containers-all");
         for (const container of containers) {
           if (container.Id === id) {
-            return socket.emit("containers-restart", id);
+            return await asyncEmit(socket, "containers-restart", id);
           }
         }
       } catch (e) {
@@ -100,7 +100,7 @@ export class ContainersService {
         const containers = await asyncEmit<Docker.ContainerInfo[]>(socket, "containers-all");
         for (const container of containers) {
           if (container.Id === id) {
-            return socket.emit("containers-start", id);
+            return await asyncEmit(socket, "containers-start", id);
           }
         }
       } catch (e) {
@@ -115,7 +115,7 @@ export class ContainersService {
         const containers = await asyncEmit<Docker.ContainerInfo[]>(socket, "containers-all");
         for (const container of containers) {
           if (container.Id === id) {
-            return socket.emit("container", id);
+            return await asyncEmit(socket, "container", id);
           }
         }
       } catch (e) {

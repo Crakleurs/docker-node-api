@@ -8,7 +8,7 @@ export class ImagesService {
 
     for (const socket of sockets) {
       try {
-        const images = await asyncEmit<Docker.ImageInfo[]>(socket, "containers-all");
+        const images = await asyncEmit<Docker.ImageInfo[]>(socket, "images-all");
         result.push(...images);
       } catch (e) {
         console.log(e)
@@ -35,10 +35,10 @@ export class ImagesService {
   async remove(id: string) {
     for (const socket of sockets) {
       try {
-        const images = await asyncEmit<Docker.ImageInfo[]>(socket, "containers-all");
+        const images = await asyncEmit<Docker.ImageInfo[]>(socket, "images-all");
         for (const image of images) {
           if (image.Id === id) {
-            return socket.emit("images-remove", id);
+            return await asyncEmit(socket,"images-remove", id);
           }
         }
       } catch (e) {

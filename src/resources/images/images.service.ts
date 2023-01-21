@@ -22,7 +22,7 @@ export class ImagesService {
     let result = 0;
     for (const socket of sockets) {
       try {
-        const {count} = await asyncEmit<{ count: number }>(socket, "images-size");
+        const {count} = await asyncEmit<{ count: number }>(socket, "images-count");
         result += count;
       } catch (e) {
         console.log(e)
@@ -61,7 +61,7 @@ export class ImagesService {
     let result = 0;
     for (const socket of sockets) {
       try {
-        const {size} = await asyncEmit<{ size: number }>(socket, "images-count");
+        const {size} = await asyncEmit<{ size: number }>(socket, "images-size");
         result += size;
       } catch (e) {
         console.log(e)

@@ -1,33 +1,74 @@
 import Docker from 'dockerode'
+import {sockets} from "~/utils/sockets";
+import {asyncEmit} from "~/utils/async-emit";
 export class ImagesService {
   async findAll() {
-    const docker = new Docker();
-    return await docker.listImages();
+
+    const result: Docker.ImageInfo[] = [];
+
+    for (const socket of sockets) {
+      try {
+        const images = await asyncEmit<Docker.ImageInfo[]>(socket, "images-all");
+        result.push(...images);
+      } catch (e) {
+        console.log(e)
+      }
+    }
+
+    return result;
   }
 
   async count() {
-    const docker = new Docker();
-    const images = await docker.listImages();
-    return {"count": images.length};
+    let result = 0;
+    for (const socket of sockets) {
+      try {
+        const {count} = await asyncEmit<{ count: number }>(socket, "images-count");
+        result += count;
+      } catch (e) {
+        console.log(e)
+      }
+    }
+
+    return {"count": result};
   }
 
   async remove(id: string) {
-    const docker = new Docker();
-    const image = docker.getImage(id);
-    await image.remove()
+    for (const socket of sockets) {
+      try {
+        const images = await asyncEmit<Docker.ImageInfo[]>(socket, "images-all");
+        for (const image of images) {
+          if (image.Id === id) {
+            return await asyncEmit(socket,"images-remove", id);
+          }
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    }
   }
 
   async prune() {
-    const docker = new Docker();
-    return await docker.pruneImages();
+    for (const socket of sockets) {
+      try {
+        await asyncEmit<Docker.ImageInfo[]>(socket, "images-prune");
+      } catch (e) {
+        console.log(e)
+      }
+    }
   }
 
   async totalSize() {
-    const docker = new Docker();
-    const images = await docker.listImages();
+    let result = 0;
+    for (const socket of sockets) {
+      try {
+        const {size} = await asyncEmit<{ size: number }>(socket, "images-size");
+        result += size;
+      } catch (e) {
+        console.log(e)
+      }
+    }
 
-    const size = images.reduce((accumulator, currentValue) => accumulator + currentValue.Size, 0);
-    return {size: size}
+    return {"size": result};
   }
 
 }

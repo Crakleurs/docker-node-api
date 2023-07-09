@@ -3,7 +3,6 @@ import {NotFoundException} from "~/utils/exception";
 import {ContainersService} from "~/resources/containers/containers.service";
 import {UserHandler} from "~/middlewares/jwt.handler";
 import * as console from "console";
-
 const ContainersController = Router()
 
 const service = new ContainersService()
@@ -11,7 +10,6 @@ const service = new ContainersService()
 
 ContainersController.get('/', async (req, res, next) => {
   try {
-
     return res
       .status(200)
       .json(await service.findAll())

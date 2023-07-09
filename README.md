@@ -24,6 +24,12 @@ To install the api on the server, you just have to clone the project.
 
 You can then launch the whole architecture using docker. Docker will create the images and then launch the database and the api.
 
+Before launching the application, you need to change de environment variable in the docker-compose.yml
+```
+      MASTER_HOST: "https://api-url
+```
+
+
 The order is as follows
 
 ``` docker-compose up -d ```

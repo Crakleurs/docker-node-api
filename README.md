@@ -26,7 +26,7 @@ You can then launch the whole architecture using docker. Docker will create the 
 
 Before launching the application, you need to change de environment variable in the docker-compose.yml
 ```
-      MASTER_HOST: "https://api-url
+      MASTER_HOST: "https://api-url"
 ```
 
 

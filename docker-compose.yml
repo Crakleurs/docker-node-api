@@ -31,3 +31,11 @@ services:
     ports:
       - "8080:8080"
       - "8000:8000"
+  worker:
+    image: efaviere/mobidock-worker:latest
+    container_name: mobidock-worker
+    restart: unless-stopped
+    environment:
+      MASTER_HOST: "https://api-url"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
